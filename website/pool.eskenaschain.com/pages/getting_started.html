@@ -55,7 +55,7 @@
                 {{ } }}
             {{ } else { }}
                 {{ for (var pool in it.poolsConfigs) { }}
-                    {{if (String(pool) == 'pirate') { continue; } }}
+                    {{if (String(pool) == 'eskenas') { continue; } }}
                     <code>
                         <h2 class="coinInfoHeader">{{=it.poolsConfigs[pool].coin.name}} Configuration:</h2>
                         <p class="highlight">&#161;&#161;&#161;Do not mine to an exchange address!!! <a href="#createWallet">Create a wallet to mine to!</a></p>
@@ -93,35 +93,20 @@
                     If you have multiple mining rigs you can add a label at the end of your username to see stats broken down by rig on the worker stats page.
                 </div>
                 <code>
-                    <h3 class="coinInfoHeader">DSTM</h3>
-                    zm --server {{=it.portalConfig.website.stratumHost}} --port {{= Object.keys(it.poolsConfigs[Object.keys(it.poolsConfigs)[0]].ports)[0] }} --user zs1nrn7h684wq4429pz8a20r49dmmhd3ey07u38f8m2n9du33ashd0xcnls3lfz0spdvn26z3r4jrv<span class="highlight">.myrigname</span> --pass x -dev 0 1 --temp-target=0:70,1:70 --intensity=0:0.5,1:0.5 --color --time
-                </code>
-                <code>
-                    <h3 class="coinInfoHeader">EWBF</h3>
-                    miner --server {{=it.portalConfig.website.stratumHost}} --user zs1nrn7h684wq4429pz8a20r49dmmhd3ey07u38f8m2n9du33ashd0xcnls3lfz0spdvn26z3r4jrv<span class="highlight">.myrigname</span> --pass x --port {{= Object.keys(it.poolsConfigs[Object.keys(it.poolsConfigs)[0]].ports)[0] }} --fee 0 --pec --templimit 70 --intensity 50
-                </code>
-                <code>
-                    <h3 class="coinInfoHeader">Bminer</h3>
-                    bminer -uri stratum://zs1nrn7h684wq4429pz8a20r49dmmhd3ey07u38f8m2n9du33ashd0xcnls3lfz0spdvn26z3r4jrv<span class="highlight">.myrigname</span>@{{=it.portalConfig.website.stratumHost}}:{{= Object.keys(it.poolsConfigs[Object.keys(it.poolsConfigs)[0]].ports)[0] }} -max-temperature 70 -nofee
-                </code>
-                <code>
-                    <h3 class="coinInfoHeader">Claymore's</h3>
-                    ZecMiner64.exe -zpool {{=it.portalConfig.website.stratumHost}}:{{= Object.keys(it.poolsConfigs[Object.keys(it.poolsConfigs)[0]].ports)[0] }} -zwal zs1nrn7h684wq4429pz8a20r49dmmhd3ey07u38f8m2n9du33ashd0xcnls3lfz0spdvn26z3r4jrv<span class="highlight">.myrigname</span> -zpsw x -allpools 1
-                </code>
-                <code>
-                    <h3 class="coinInfoHeader">Optiminer</h3>
-                    optiminer-zcash -s {{=it.portalConfig.website.stratumHost}}:{{= Object.keys(it.poolsConfigs[Object.keys(it.poolsConfigs)[0]].ports)[0] }} -u zs1nrn7h684wq4429pz8a20r49dmmhd3ey07u38f8m2n9du33ashd0xcnls3lfz0spdvn26z3r4jrv<span class="highlight">.myrigname</span> -p x
+                    <h3 class="coinInfoHeader">EWBF 0.3.4b example settings</h3>
+                    miner --server stratum.piratepool.io --user zs1nrn7h684wq4429pz8a20r49dmmhd3ey07u38f8m2n9du33ashd0xcnls3lfz0spdvn26z3r4jrv.myrigname --pass x --port 2778 --fee 0 --pec --templimit 70 --intensity 50
                 </code>
             {{ } }}
         </div>
 
         <h1 class="menuHeader" id="payments">Payments</h1>
         <div class="gettingStartedContent">
-            <p>Payouts are currently scheduled once every 4 hours with a minimum payout of 21 ARRR.</p>
+            <p>Payouts are currently scheduled once every hour with a minimum payout of 1 ESKN.</p>
             <p>There is a limit of ~200 recipients that can be included in a single payout, so the pool payouts are monitored and the min payout adjusted accordingly to ensure a constant flow of payments.</p>
-            <p>If payments stop going out, do not worry! Funds are safu! Blocks can still be found and will be credited to your worker! Please check <!-- the <a href="https://discord.gg/rZCXtCC">#pools-and-operators channel in discord</a>--><a href="https://discord.gg/ASMfX7B" target="_blank" rel="nofollow noreferrer noopener" class="highlight">#piratepool in discord</a> to see if it's already being worked on.</p>
-            <p>Pending blocks have not yet been scanned by the payment processor. After being scanned, blocks will need to receive both <a href="https://komodoplatform.com/security-delayed-proof-of-work-dpow/" target="_blank" rel="noopener noreferrer">dPoW notarization</a> and 10 confirmations before being actually paid out.</p>
-            <p>On your worker stats page, <em class="highlight">pending</em> balance is the remaining estimated amount to be paid for blocks that
+            <p>If payments stop going out, do not worry! Funds are safu! Blocks can still be found and will be credited to your worker! Please check <a href="https://t.me/EskenasEnglish" target="_blank" rel="nofollow noreferrer noopener" class="highlight">the telegram channel</a> to see if it's already being worked on.</p>
+            <!-- <p>Pending blocks have not yet been scanned by the payment processor. After being scanned, blocks will need to receive both <a href="https://komodoplatform.com/security-delayed-proof-of-work-dpow/" target="_blank" rel="noopener noreferrer">dPoW notarization</a> and 25 confirmations before being actually paid out.</p> -->
+            Pending blocks have not yet been scanned by the payment processor. After being scanned, blocks will need to receive 25 confirmations before being actually paid out.</p>
+            <p>On your worker stats page,<em class="highlight">Shares</em> are equivalent to the amount of work at the difficulty level needed for your miners to submit work within 15s. For each block found, you are credited ESKN from the block reward proportional to the pool's total amount of shares since the last block found by the pool.<em class="highlight">*</em>, <em class="highlight">pending</em> balance is the remaining estimated amount to be paid for blocks that
             were scanned but not yet eligible for payout either because of
             <a href="https://komodoplatform.com/new-feature-to-verify-dpow-notarizations/" target="_blank" rel="noopener noreferrer">dPoW</a> or min confirmations.
             <em class="highlight">Balance</em> includes blocks that were scanned and already paid out but you have not yet met the min payout.<em class="highlight">*</em></p>
@@ -131,33 +116,34 @@
 
         <h1 class="menuHeader" id="createWallet">Generate Wallet and Address</h1>
         <div class="gettingStartedContent">
-            <p><a href="https://medium.com/piratechain/pirateocean-wallet-guide-1cb80f70364c" target="_blank" rel="noopener noreferrer">The PirateOceanQT for PIRATE</a> is available. For wallet support please visit <a href="https://discord.gg/qReShun">#newpirates on Discord</a></p>
+            <p><a href="https://eskenascoin.com/#wallets" target="_blank" rel="noopener noreferrer">The Eskenas Coin wallet</a> is available. For wallet support please visit <a href="https://t.me/EskenasEnglish">trlrgram channel</a></p>
 
             <h4>CLI Wallet:</h4>
             <ol>
-                <li><a href="https://docs.komodoplatform.com/komodo/install-Komodo-manually.html" target="_blank">Build Komodo</a></li>
-                <li>Launch PIRATE chain:
+                <li><a href="https://github.com/eskenascoin/eskenas#build-eskenas" target="_blank">Build Eskenas</a></li>
+                <li>Launch ESKN chain:
                     <code>
-                        ./komodod -ac_name=PIRATE -ac_supply=0 -ac_reward=25600000000 -ac_halving=77777 -ac_private=1 -addnode=136.243.102.225
+                        cd src
+                        ./eskenasd
                     </code>
                 </li>
                 <li>Generate Z address:
                     <code>
-                        ./komodo-cli -ac_name=PIRATE z_getnewaddress
+                        ./eskenas-cli z_getnewaddress
                     </code>
                 </li>
                 <li>Securely backup your private key:
                     <code>
-                        ./komodo-cli -ac_name=PIRATE z_exportkey "zaddr"
+                        ./eskenas-cli z_exportkey "zaddr"
                     </code>
                 </li>
                 <li>Check your balance:
                     <code>
-                        ./komodo-cli -ac_name=PIRATE z_gettotalbalance
+                        ./eskenas-cli z_gettotalbalance
                     </code>
                 </li>
                 <li>
-                    For more information visit the <a href="https://pirate.black/" target="_blank">project website</a>
+                    For more information visit the <a href="https://eskenascoin.com/" target="_blank">project website</a>
                 </li>
             </ol>
         </div>
@@ -172,19 +158,19 @@
                 <li><a href="https://www.bminer.me/releases/" target="_blank" rel="noopener noreferrer">Bminer Lite</a></li>
                 <li><a href="https://bitcointalk.org/index.php?topic=1670733.0" target="_blank" rel="noopener noreferrer">Claymore's ZCash/BTG AMD GPU Miner</a></li>
                 <li><a href="https://github.com/Optiminer/OptiminerZcash" target="_blank" rel="noopener noreferrer">Optiminer AMD</a></li>
-
             </ul>
+            <p>YMMV, we haven't tested whether these work for ESKN coin and if any mods are required. It is upto the community to figure things out.</p>
         </div>
 
         <h1 class="menuHeader" id="cpuMining">CPU Mining</h1>
         <div class="gettingStartedContent">
-            <p>While it is possible to CPU mine with <b>komodod</b> directly like so:</p>
+            <p>While it is possible to CPU mine with <b>eskenasd</b> directly like so:</p>
             <code>
-                ./komodo-cli -ac_name=PIRATE setgenerate true
+                ./eskenas-cli setgenerate true 1
             </code>
-            <p>The chances to find a block solo with CPU mining only are already fairly low and most likely the reason you are here at all 🐸</p>
-            <p>The well-known CPU miner that can be used with the pool is <b>nheqminer</b>. This does <i>not</i> require a Nicehash account and can be used to connect to any equihash stratum.</p>
-
+            <p>The chances to find a block solo with CPU mining will be very low once this and any other pools get any participants at all</p>
+            <p>The well-known CPU miner that can be used is <b>nheqminer</b>. This does <i>not</i> require a Nicehash account and can be used to connect to any equihash stratum.</p>
+            <p><em>We haven't tested this, YMMV!</em></p>
             <h4>Linux</h4>
             <p>It is suggested that you attempt to build the CPU miner instead of using the pre-compiled binary so that optimizations for your CPU can be made during the build process</p>
             <code>
