@@ -50,7 +50,7 @@ $(function() {
                         }
                     } else {
                         //Update existing (txid) for private chains
-                        if (typeof paymentstat.txid !== 'undefined' && (String(stats.pools[pool].name).startsWith("pirate") || String(stats.pools[pool].name).startsWith("arrr")) ) {
+                        if (typeof paymentstat.txid !== 'undefined' && (String(stats.pools[pool].name).startsWith("eskenas") || String(stats.pools[pool].name).startsWith("eskn")) ) {
                             var paymentblock = document.querySelector('#payment' + pool + paymentstat.time + ' .paymentblocks a');
 
                             paymentblock.setAttribute('href', explorerURL + 'tx/' + paymentstat.txid);
