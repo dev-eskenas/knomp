@@ -55,10 +55,12 @@
                 {{ } }}
             {{ } else { }}
                 {{ for (var pool in it.poolsConfigs) { }}
-                    {{if (String(pool) == 'eskenas') { continue; } }}
                     <code>
                         <h2 class="coinInfoHeader">{{=it.poolsConfigs[pool].coin.name}} Configuration:</h2>
                         <p class="highlight">&#161;&#161;&#161;Do not mine to an exchange address!!! <a href="#createWallet">Create a wallet to mine to!</a></p>
+                        <p>{{=it.poolsConfigs[pool].coin.name}} wallet addresses start with zs1!</p>
+
+                        <p>Mining to any other addresses and improperly formatted addresses will result in no funds for your work obviously.</p>
                         <table style="margin-top:10px;">
                             <tr>
                                 <td>Username: </td>
@@ -94,7 +96,7 @@
                 </div>
                 <code>
                     <h3 class="coinInfoHeader">EWBF 0.3.4b example settings</h3>
-                    miner --server stratum.pool.eskenaschain.com --user zs1nrn7h684wq4429pz8a20r49dmmhd3ey07u38f8m2n9du33ashd0xcnls3lfz0spdvn26z3r4jrv.myrigname --pass x --port 2778 --fee 0 --pec --templimit 70 --intensity 50
+                    miner --server stratum.pool.eskenaschain.com --user zs1nrn7h684wq4429pz8a20r49dmmhd3ey07u38f8m2n9du33ashd0xcnls3lfz0spdvn26z3r4jrv.myrigname --pass x --port 3334 --fee 0 --pec --templimit 70 --intensity 50
                 </code>
             {{ } }}
         </div>
@@ -106,11 +108,11 @@
             <p>If payments stop going out, do not worry! Funds are safu! Blocks can still be found and will be credited to your worker! Please check <a href="https://t.me/EskenasEnglish" target="_blank" rel="nofollow noreferrer noopener" class="highlight">the telegram channel</a> to see if it's already being worked on.</p>
             <!-- <p>Pending blocks have not yet been scanned by the payment processor. After being scanned, blocks will need to receive both <a href="https://komodoplatform.com/security-delayed-proof-of-work-dpow/" target="_blank" rel="noopener noreferrer">dPoW notarization</a> and 25 confirmations before being actually paid out.</p> -->
             Pending blocks have not yet been scanned by the payment processor. After being scanned, blocks will need to receive 25 confirmations before being actually paid out.</p>
-            <p>On your worker stats page,<em class="highlight">Shares</em> are equivalent to the amount of work at the difficulty level needed for your miners to submit work within 15s. For each block found, you are credited ESKN from the block reward proportional to the pool's total amount of shares since the last block found by the pool.<em class="highlight">*</em>, <em class="highlight">pending</em> balance is the remaining estimated amount to be paid for blocks that
+            <p>On your worker stats page,<em class="highlight">Shares</em> are equivalent to the amount of work at the difficulty level needed for your miners to submit work within 15s. For each block found, you are credited ESKN from the block reward proportional to the pool's total amount of shares since the last block found by the pool., <em class="highlight">Pending<em class="highlight">*</em></em> balance is the remaining estimated amount to be paid for blocks that
             were scanned but not yet eligible for payout either because of
             <a href="https://komodoplatform.com/new-feature-to-verify-dpow-notarizations/" target="_blank" rel="noopener noreferrer">dPoW</a> or min confirmations.
-            <em class="highlight">Balance</em> includes blocks that were scanned and already paid out but you have not yet met the min payout.<em class="highlight">*</em></p>
-            <p><em class="highlight">*Please note these 2 stats will only update when the payment processor runs which is currently every 4 hours.</em></p>
+            <em class="highlight">Balance<em class="highlight">*</em></em> includes blocks that were scanned and already paid out but you have not yet met the min payout.</p>
+            <p><em class="highlight">*Please note these 2 stats will only update when the payment processor runs which is currently every 1 hours.</em></p>
             <p>Payments that show up on the payments page initially are in the process of constructing the z transaction. Once the transaction actually broadcasts to the network, the blocks paid out will become hyperlinked to the explorer and then should arrive in your wallet in the next block or two.</p>
         </div>
 
