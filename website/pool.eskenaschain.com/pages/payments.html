@@ -14,8 +14,6 @@ function timeTilNumbers(timestamp) {
 }}
 <div id="pagePayments">
     <div class="alertbar">
-        <!-- Payout frequency has been changed to 4 hours because miners have been mining to exchange addresses&#8230;-->
-        <!-- Block Reward Halving occured at block <a href="https://explorer.pirate.black/block/00000000004332fdca73719414e6e595c5f9f909bf39df5ff68f56b008b29790" target="_blank" rel="nofollow noreferrer noopener">388,885</a>!! Join <a href="https://discord.gg/ASMfX7B" target="_blank" rel="nofollow noreferrer noopener" class="highlight">#piratepool</a> for support and discussion! 🐸 -->
         Payout strategy set to PPLNT with 1 hour payout frequency! Join <a href="https://t.me/EskenasEnglish" target="_blank" rel="nofollow noreferrer noopener" class="highlight">telegram channel</a> for support and discussion! 
     </div>
     {{ for(var pool in it.stats.pools) { }}
@@ -25,7 +23,7 @@ function timeTilNumbers(timestamp) {
                 Lifetime<br class="responsiveonly" />
                 <i class="fas fa-link fa-fw"></i> <span id="statsValidBlocks{{=pool}}">{{=parseInt(it.stats.pools[pool].poolStats.validBlocks).toLocaleString('en')}}</span> Blocks Found<span class="responsivehide"> &#160;&#160;</span><br class="responsiveonly" />
                 <i class="fas fa-money-bill-wave fa-fw"></i> <span id="statsTotalPaid{{=pool}}">{{=parseInt(it.stats.pools[pool].poolStats.totalPaid).toLocaleString('en')}}</span> {{=it.stats.pools[pool].symbol}} Paid<span class="responsivehide"> &#160;&#160;</span><br class="responsiveonly" />
-                <i class="far fa-clock fa-fw"></i> Next Payment ETA <span id="statsNextPayment{{=pool}}" class="countdownTimer">{{=timeTil(it.poolsConfigs[pool].paymentProcessing.paymentInterval-parseInt((new Date().getTime() - parseInt(it.stats.pools[pool].payments[0].time))/1000))}}</span>
+                <i class="far fa-clock fa-fw"></i> Next Payment ETA <span id="statsNextPayment{{=pool}}" class="countdownTimer">{{=timeTil(it.poolsConfigs[pool].paymentProcessing.paymentInterval-parseInt((new Date().getTime() - parseInt(it.stats.pools[pool].payments[0] ? it.stats.pools[pool].payments[0].time : 0))/1000))}}</span>
             </small>
         </div>
         <table class="pure-table" id="paymentTable{{=pool}}">
@@ -45,7 +43,7 @@ function timeTilNumbers(timestamp) {
                         <span class="responsiveTableLabel"><i class="fas fa-link fa-fw"></i></span> <span>Blocks: [{{=it.stats.pools[pool].payments[p].blocks.length}}] </span>
                         {{if (String(it.stats.pools[pool].name) == "KMD") { }}
                             <a href="https://kmdexplorer.io/tx/{{=it.stats.pools[pool].payments[p].txid}}" target="_blank" rel="noopener noreferrer">{{=it.stats.pools[pool].payments[p].blocks}}</a>
-                        {{ } else if (typeof it.stats.pools[pool].payments[p].txid !== 'undefined' && (String(it.stats.pools[pool].name).startsWith("eskenas") || String(it.stats.pools[pool].name).startsWith("ESKN")) ) { }}
+                        {{ } else if (typeof it.stats.pools[pool].payments[p].txid !== 'undefined' && (String(it.stats.pools[pool].name).startsWith("eskenas") || String(it.stats.pools[pool].name).startsWith("eskn")) ) { }}
                             <a href="https://explorer.eskenaschain.com/tx/{{=it.stats.pools[pool].payments[p].txid}}" target="_blank" rel="noopener noreferrer">{{=it.stats.pools[pool].payments[p].blocks}}</a>
                         {{ } else { }}
                             <a>{{=it.stats.pools[pool].payments[p].blocks}}</a>

@@ -64,6 +64,7 @@
             </div>
 
             <div class="blocksFoundList">
+                {{if (it.stats.pools[pool].pending.blocks.length !== 0) { }}
                 {{ for (var b in it.stats.pools[pool].pending.blocks) { }}
                     {{ var block = it.stats.pools[pool].pending.blocks[b].split(":"); }}
                     <div class="blocksFoundPending" id="blocksFoundPending{{=block[0]}}" title="{{if (it.stats.pools[pool].pending.confirms && it.stats.pools[pool].pending.confirms[block[0]]) { }}{{if (it.stats.pools[pool].pending.confirms[block[0]] == 1) { }}Waiting for dPoW notarization{{} else if (it.stats.pools[pool].pending.confirms[block[0]] < it.poolsConfigs[pool].paymentProcessing.minConf*2) { }}Waiting for min confirmations{{ } else { }}Queued for payment{{ } }}{{ } else { }}Waiting for payment processor to review{{ } }}">
@@ -101,6 +102,7 @@
                             <span class="countLabel">Paid</span>
                         </div>
                     </div>
+                {{ } }}
                 {{ } }}
             </div>
         </div>

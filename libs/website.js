@@ -24,12 +24,15 @@ module.exports = function(logger){
 
     var portalConfig = JSON.parse(process.env.portalConfig);
     var poolConfigs = JSON.parse(process.env.pools);
+// console.log(portalConfig)
+// console.log(poolConfigs)
 
     var websiteConfig = portalConfig.website;
     var websiteTemplate = 'website/' + (typeof websiteConfig.template !== 'undefined' && websiteConfig.template ? websiteConfig.template : 'default');
 
     var portalApi = new api(logger, portalConfig, poolConfigs);
     var portalStats = portalApi.stats;
+// console.log(portalApi)
 
     var logSystem = 'Website';
 
@@ -58,6 +61,7 @@ module.exports = function(logger){
     var processTemplates = function(){
 
         for (var pageName in pageTemplates){
+            // console.log("portalStats.stats"+JSON.stringify(portalStats.stats.pools))
             if (pageName === 'index') continue;
             pageProcessed[pageName] = pageTemplates[pageName]({
                 poolsConfigs: poolConfigs,
