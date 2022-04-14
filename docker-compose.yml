@@ -19,18 +19,6 @@ services:
     depends_on:
       - redis
 
-  redis-commander:
-    image: rediscommander/redis-commander:latest
-    environment:
-      - REDIS_HOSTS=local:redis:6379
-      - REDIS_PASSWORD=<change this>
-      - HTTP_USER=<change this>
-      - HTTP_PASSWORD=<change this>
-    ports:
-      - 8081:8081
-    depends_on:
-      - redis
-
   redis:
     image: redis:6.0.10-alpine
     container_name: redis
