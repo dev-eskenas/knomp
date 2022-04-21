@@ -2,7 +2,7 @@ FROM ubuntu:18.04
 LABEL maintainer="webworker01"
 
 RUN apt-get update -y && \
-    apt-get install -y gcc g++ make libboost-dev libboost-system-dev libsodium-dev sudo curl git iputils-ping
+    apt-get install -y gcc g++ make libboost-dev libboost-system-dev libsodium-dev sudo curl git iputils-ping daemontools
 
 RUN curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash - && \
     apt-get install -y nodejs
@@ -21,4 +21,4 @@ WORKDIR /home/knomp/knomp
 
 EXPOSE 8080
 
-CMD npm start
+CMD npm start | multilog t s10000 n30 '!tai64nlocal' /home/knomp/knomp/pool_logs 2>&1
