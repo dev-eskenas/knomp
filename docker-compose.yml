@@ -13,7 +13,7 @@ services:
       - ./libs:/home/knomp/knomp/libs
       - ./pool_configs:/home/knomp/knomp/pool_configs
       - ./website:/home/knomp/knomp/website
-      - ./pool-logs:/home/knomp/knomp/pool_logs
+      - ./pool_logs:/home/knomp/knomp/pool_logs
 
     # ports:
     #   - 8080:8080
