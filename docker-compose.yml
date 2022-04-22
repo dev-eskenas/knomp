@@ -3,6 +3,7 @@ version: '3'
 services:
   knomp:
     container_name: knomp
+    user: $UID:$GID
     network_mode: host
     build:
       context: .

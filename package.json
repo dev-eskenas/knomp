@@ -52,7 +52,7 @@
         "node": ">=8.11"
     },
     "scripts": {
-        "start": "LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$PWD/node_modules/stratum-pool/node_modules/equihashverify/build/Release/:$PWD/node_modules/equihashverify/build/Release/ node init.js  2>&1 | logrotate-stream ./pool_logs/app.log --keep 3 --size '50m' --compress",
+        "start": "LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$PWD/node_modules/stratum-pool/node_modules/equihashverify/build/Release/:$PWD/node_modules/equihashverify/build/Release/ node init.js  2>&1 | logrotate-stream ./pool_logs/app.log --keep 30 --size '5m' --compress",
         "debug": "LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$PWD/node_modules/stratum-pool/node_modules/equihashverify/build/Release/:$PWD/node_modules/equihashverify/build/Release/ node --inspect init.js"
     }
 }
