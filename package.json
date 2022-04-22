@@ -45,13 +45,14 @@
         "nonce": "1.0.4",
         "redis": "2.8.0",
         "request": "^2.88.0",
-        "stratum-pool": "git+https://github.com/webworker01/node-stratum-pool.git"
+        "stratum-pool": "git+https://github.com/webworker01/node-stratum-pool.git",
+        "logrotate-stream": "^0.2.8"
     },
     "engines": {
         "node": ">=8.11"
     },
     "scripts": {
-        "start": "LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$PWD/node_modules/stratum-pool/node_modules/equihashverify/build/Release/:$PWD/node_modules/equihashverify/build/Release/ node init.js",
+        "start": "LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$PWD/node_modules/stratum-pool/node_modules/equihashverify/build/Release/:$PWD/node_modules/equihashverify/build/Release/ node init.js  2>&1 | logrotate-stream ./pool_logs/app.log --keep 3 --size '50m' --compress",
         "debug": "LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$PWD/node_modules/stratum-pool/node_modules/equihashverify/build/Release/:$PWD/node_modules/equihashverify/build/Release/ node --inspect init.js"
     }
 }

@@ -21,4 +21,4 @@ WORKDIR /home/knomp/knomp
 
 EXPOSE 8080
 
-CMD npm start | multilog t s10000 n30 '!tai64nlocal' /home/knomp/knomp/pool_logs 2>&1
+CMD npm start
