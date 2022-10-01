@@ -44,7 +44,7 @@ function timeTilNumbers(timestamp) {
                         {{if (String(it.stats.pools[pool].name) == "KMD") { }}
                             <a href="https://kmdexplorer.io/tx/{{=it.stats.pools[pool].payments[p].txid}}" target="_blank" rel="noopener noreferrer">{{=it.stats.pools[pool].payments[p].blocks}}</a>
                         {{ } else if (typeof it.stats.pools[pool].payments[p].txid !== 'undefined' && (String(it.stats.pools[pool].name).startsWith("eskenas") || String(it.stats.pools[pool].name).startsWith("eskn")) ) { }}
-                            <a href="https://explorer.eskenaschain.com/tx/{{=it.stats.pools[pool].payments[p].txid}}" target="_blank" rel="noopener noreferrer">{{=it.stats.pools[pool].payments[p].blocks}}</a>
+                            <a href="https://explorer.eskenascoin.com/tx/{{=it.stats.pools[pool].payments[p].txid}}" target="_blank" rel="noopener noreferrer">{{=it.stats.pools[pool].payments[p].blocks}}</a>
                         {{ } else { }}
                             <a>{{=it.stats.pools[pool].payments[p].blocks}}</a>
                         {{ } }}

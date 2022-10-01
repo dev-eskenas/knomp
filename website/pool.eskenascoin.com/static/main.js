@@ -1,5 +1,5 @@
 //Set this to match config for payment countdown
-var explorerURL = 'https://explorer.eskenaschain.com/';
+var explorerURL = 'https://explorer.eskenascoin.com/';
 var minConfirmations = 10;
 var paymentInterval = 14400;
 
